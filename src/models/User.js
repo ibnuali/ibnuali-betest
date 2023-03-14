@@ -38,13 +38,11 @@ const userSchema = mongoose.Schema(
   }
 );
 
-// auto fill the userId field with the _id field
 userSchema.pre("save", function (next) {
   this.userId = this._id;
   next();
 });
 
-// remove the _id and __v fields from the response
 userSchema.methods.toJSON = function () {
   const obj = this.toObject();
   delete obj._id;

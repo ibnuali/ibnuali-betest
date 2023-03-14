@@ -34,7 +34,6 @@ accountLoginSchema.pre("save", async function (next) {
   if (accountLogin.isModified("password")) {
     accountLogin.password = await bcrypt.hash(accountLogin.password, 8);
   }
-
   next();
 });
 
