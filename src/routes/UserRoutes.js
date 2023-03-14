@@ -1,18 +1,25 @@
 const express = require("express");
 const UserController = require("../controllers/UserController");
-// const middleware = require('../middleware/validator');
-
+const auth = require("../middlewares/auth");
 const router = express.Router();
 
 router
   .route("/")
-  .get(UserController.getAllUsers)
-  .post(UserController.createUser);
+  .get(auth, UserController.getAllUsers)
+  .post(auth, UserController.createUser);
+
+router
+  .route("/account-number/:accountNumber")
+  .get(auth, UserController.getUserByAccountNumber);
+
+router
+  .route("/registration-number/:registrationNumber")
+  .get(auth, UserController.getUserByRegistrationNumber);
 
 router
   .route("/:id")
-  .get(UserController.getUser)
-  .patch(UserController.updateUser)
-  .delete(UserController.deleteUser);
-  
+  .get(auth, UserController.getUser)
+  .patch(auth, UserController.updateUser)
+  .delete(auth, UserController.deleteUser);
+
 module.exports = router;
