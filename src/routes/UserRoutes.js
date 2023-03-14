@@ -1,12 +1,12 @@
 const express = require("express");
-const UserController = require("../controllers/UserController");
+const UserController = require("../controllers/userController");
 const auth = require("../middlewares/auth");
 const router = express.Router();
 
 router
   .route("/")
   .get(auth, UserController.getAllUsers)
-  .post(auth, UserController.createUser);
+  .post(UserController.createUser);
 
 router
   .route("/account-number/:accountNumber")

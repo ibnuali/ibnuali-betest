@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 const userRoutes = require('./routes/userRoutes');
-const accountRoutes = require('./routes/AccountRoutes');
+const accountRoutes = require('./routes/accountRoutes');
 
 // 1) MiddleWare
 app.use(express.json());
