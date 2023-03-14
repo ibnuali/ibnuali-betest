@@ -1,17 +1,17 @@
 const express = require("express");
-const AccountLogin = require("../controllers/AccountLogin");
-// const middleware = require('../middleware/validator');
+const AccountLogin = require("../controllers/accountController");
+const auth = require('../middlewares/auth');
 
 const router = express.Router();
 
 router
   .route("/")
-  .get(AccountLogin.getAllAccounts)
-  .post(AccountLogin.createAccount);
+  .get(auth, AccountLogin.getAllAccounts)
+  .post(auth, AccountLogin.createAccount);
 
 router
     .route("/last-login-date-time")
-    .get(AccountLogin.getAccountLoginByLastLoginDateTime);
+    .get(auth, AccountLogin.getAccountLoginByLastLoginDateTime);
 
 router
     .route("/login")
@@ -19,9 +19,9 @@ router
 
 router
   .route("/:id")
-  .get(AccountLogin.getAccount)
-  .patch(AccountLogin.updateAccount)
-  .delete(AccountLogin.deleteAccount);
+  .get(auth, AccountLogin.getAccount)
+  .patch(auth, AccountLogin.updateAccount)
+  .delete(auth, AccountLogin.deleteAccount);
 
 
   
