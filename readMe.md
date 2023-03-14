@@ -38,15 +38,15 @@ Start the server
 
 ### Endpoint User
 
-| method   | url                               | Description                         |
-| :------- | :-------------------------------- | :---------------------------------- |
-| `GET`    | `/api/v1/user`                    | get all users                       |
+| method   | url                                | Description                         |
+| :------- | :--------------------------------- | :---------------------------------- |
+| `GET`    | `/api/v1/user`                     | get all users                       |
 | `GET`    | `/api/v1/user/:accountNumber`      | get user info by accountNumber      |
 | `GET`    | `/api/v1/user/:registrationNumber` | get user info by registrationNumber |
-| `GET`    | `/api/v1/user/:id`                | get user info by id                 |
-| `POST`   | `/api/v1/user`                    | create data user                    |
-| `PUT`    | `/api/v1/user/:id`                | edit data user                      |
-| `DELETE` | `/api/v1/user/:id`                | delete data user                    |
+| `GET`    | `/api/v1/user/:id`                 | get user info by id                 |
+| `POST`   | `/api/v1/user`                     | create data user                    |
+| `PUT`    | `/api/v1/user/:id`                 | edit data user                      |
+| `DELETE` | `/api/v1/user/:id`                 | delete data user                    |
 
 ##### example body param for method `POST /api/v1/user`
 
@@ -76,6 +76,7 @@ Start the server
 
 ```json
 {
-	"username": "string",
-	"password": "string"
+  "username": "string",
+  "password": "string"
 }
+```
