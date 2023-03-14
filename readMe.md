@@ -1,7 +1,7 @@
 
 ## API Reference
 
-### Endpoint Asset
+### Endpoint User
 method   | url                  | Description                       |
 :------- |:----------------     | :-------------------------------- |
 `GET`    | `/api/v1/user`     | get all users               |
