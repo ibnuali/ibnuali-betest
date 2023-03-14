@@ -1,25 +1,25 @@
 const express = require("express");
-const UserController = require("../controllers/userController");
+const userController = require("../controllers/userController");
 const auth = require("../middlewares/auth");
 const router = express.Router();
 
 router
   .route("/")
-  .get(auth, UserController.getAllUsers)
-  .post(UserController.createUser);
+  .get(auth, userController.getAllUsers)
+  .post(userController.createUser);
 
 router
   .route("/account-number/:accountNumber")
-  .get(auth, UserController.getUserByAccountNumber);
+  .get(auth, userController.getUserByAccountNumber);
 
 router
   .route("/registration-number/:registrationNumber")
-  .get(auth, UserController.getUserByRegistrationNumber);
+  .get(auth, userController.getUserByRegistrationNumber);
 
 router
   .route("/:id")
-  .get(auth, UserController.getUser)
-  .patch(auth, UserController.updateUser)
-  .delete(auth, UserController.deleteUser);
+  .get(auth, userController.getUser)
+  .patch(auth, userController.updateUser)
+  .delete(auth, userController.deleteUser);
 
 module.exports = router;

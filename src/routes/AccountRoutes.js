@@ -1,27 +1,27 @@
 const express = require("express");
-const AccountLogin = require("../controllers/accountController");
-const auth = require('../middlewares/auth');
+const accountController = require("../controllers/accountController");
+const auth = require("../middlewares/auth");
 
 const router = express.Router();
 
 router
   .route("/")
-  .get(auth, AccountLogin.getAllAccounts)
-  .post(auth, AccountLogin.createAccount);
+  .get(auth, accountController.getAllAccounts)
+  .post(auth, accountController.createAccount);
 
 router
     .route("/last-login-date-time")
-    .get(auth, AccountLogin.getAccountLoginByLastLoginDateTime);
+    .get(auth, accountController.getAccountLoginByLastLoginDateTime);
 
 router
     .route("/login")
-    .post(AccountLogin.loginAccount);
+    .post(accountController.loginAccount);
 
 router
   .route("/:id")
-  .get(auth, AccountLogin.getAccount)
-  .patch(auth, AccountLogin.updateAccount)
-  .delete(auth, AccountLogin.deleteAccount);
+  .get(auth, accountController.getAccount)
+  .patch(auth, accountController.updateAccount)
+  .delete(auth, accountController.deleteAccount);
 
 
   
