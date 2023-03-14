@@ -1,0 +1,13 @@
+# create yml express app and mongo db
+version: '1.0'
+service:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
