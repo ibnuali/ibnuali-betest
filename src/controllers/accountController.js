@@ -4,12 +4,14 @@ const factory = require("./handlerFactory");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const catchAsync = require("../middlewares/catchAsync");
+const AppError = require("../utils/appError");
 
 // create get account login by lastLoginDateTime > 3 days
 exports.getAccountLoginByLastLoginDateTime = async (req, res, next) => {
-  const limit3Days = 3 * 24 * 60 * 60 * 1000;
+  const threeDaysAgo = new Date(Date.now() - 3 * 24 * 60 * 60 * 1000);
+
   const doc = await Account.find({
-    lastLoginDateTime: { $lt: new Date(Date.now() - limit3Days) },
+    lastLoginDateTime: { $lt: threeDaysAgo },
   });
   if (!doc) {
     return next(new AppError("No document found with that ID", 404));
@@ -24,12 +26,8 @@ exports.loginAccount = catchAsync(async (req, res, next) => {
   const { username, password } = req.body;
 
   const accountData = await Account.findOne({ userName: username });
-  if (!accountData) {
-    return next(new AppError("No document found with that ID", 404));
-  }
 
   if (accountData && (await bcrypt.compare(password, accountData.password))) {
-    // update data account to fill lastLoginDateTime
     await Account.findByIdAndUpdate(
       accountData._id,
       { lastLoginDateTime: Date.now() },
@@ -43,7 +41,6 @@ exports.loginAccount = catchAsync(async (req, res, next) => {
         expiresIn: "2h",
       }
     );
-    console.log(token);
     res.status(200).json({
       status: "success",
       token: token,
