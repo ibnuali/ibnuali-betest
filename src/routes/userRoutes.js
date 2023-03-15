@@ -1,12 +1,14 @@
 const express = require("express");
+const router = express.Router();
+
+const cache = require("../middlewares/cache");
 const userController = require("../controllers/userController");
 const auth = require("../middlewares/auth");
-const router = express.Router();
 
 router
   .route("/")
-  .get(auth, userController.getAllUsers)
-  .post(userController.createUser);
+  .get(auth, cache, userController.getAllUsers)
+  .post(cache, userController.createUser);
 
 router
   .route("/account-number/:accountNumber")
@@ -18,7 +20,7 @@ router
 
 router
   .route("/:id")
-  .get(auth, userController.getUser)
+  .get(auth, cache, userController.getUser)
   .patch(auth, userController.updateUser)
   .delete(auth, userController.deleteUser);
 
