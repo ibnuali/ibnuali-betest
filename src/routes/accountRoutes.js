@@ -10,7 +10,7 @@ router
   .post(auth, accountController.createAccount);
 
 router
-    .route("/last-login-date-time")
+    .route("/last-login")
     .get(auth, accountController.getAccountLoginByLastLoginDateTime);
 
 router

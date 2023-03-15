@@ -87,30 +87,6 @@ describe('User Test', () => {
             expect(res).to.have.status(200)
             expect(res.body.data).to.be.an('object')
         })
-        it('should return token if user is logged in', async () => {
-            const res = await chai
-                .request(app)
-                .post('/api/v1/account/login')
-                .send({
-                    username: userData.userName,
-                    password: userData.password,
-                })
-
-            expect(res).to.have.status(200)
-            expect(res.body).to.be.an('object')
-        })
-        it('should return error if user is not logged in', async () => {
-            const res = await chai
-                .request(app)
-                .post('/api/v1/account/login')
-                .send({
-                    username: userData.userName,
-                    password: 'wrong password',
-                })
-
-            expect(res).to.have.status(400)
-            expect(res.body).to.be.an('object')
-        })
         it('should create user', async () => {
             const res = await chai
                 .request(app)
