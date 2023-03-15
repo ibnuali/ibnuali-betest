@@ -5,7 +5,7 @@ const factory = require('./handlerFactory')
 
 exports.getUserByAccountNumber = catchAsync(async (req, res, next) => {
     const accountNumber = req.params.accountNumber
-    const doc = await User.find({ accountNumber: accountNumber })
+    const doc = await User.findOne({ accountNumber: accountNumber })
 
     if (!doc) {
         return next(new AppError('No document found with that ID', 404))
@@ -18,7 +18,7 @@ exports.getUserByAccountNumber = catchAsync(async (req, res, next) => {
 
 exports.getUserByRegistrationNumber = catchAsync(async (req, res, next) => {
     const registrationNumber = req.params.registrationNumber
-    const doc = await User.find({ registrationNumber: registrationNumber })
+    const doc = await User.findOne({ registrationNumber: registrationNumber })
 
     if (!doc) {
         return next(new AppError('No document found with that ID', 404))
@@ -144,6 +144,22 @@ exports.getAllUsers = catchAsync(async (req, res) => {
     }
 })
 
+exports.deleteUser = catchAsync(async (req, res, next) => {
+  try {
+    await User.findByIdAndDelete(req.params.id)
+    await Account.findOneAndDelete({ userId: req.params.id })
+    res.status(204).json({
+        status: 'success',
+        data: null,
+    })
+  } catch (err) {
+      res.status(400).json({
+          status: 'fail',
+          message: 'failed to delete user',
+      })
+  }
+})
+
 // exports.getAllUsers = factory.getAll(User)
 exports.updateUser = factory.updateOne(User)
-exports.deleteUser = factory.deleteOne(User)
+// exports.deleteUser = factory.deleteOne(User)
