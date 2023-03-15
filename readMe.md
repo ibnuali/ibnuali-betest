@@ -31,7 +31,13 @@ Start the server
 ## Run Docker
 
 ```bash
-  docker-compose up
+  docker-compose up (comming soon)
+```
+
+## Url API
+
+```bash
+  https://ibnuali-api-betest.vercel.app/
 ```
 
 ## API Reference
