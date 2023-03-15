@@ -49,4 +49,6 @@ accountLoginSchema.methods.toJSON = function () {
   return obj;
 };
 
-module.exports = mongoose.model("AccountLogin", accountLoginSchema);
+const AccountLogin = mongoose.model("AccountLogin", accountLoginSchema);
+
+module.exports = AccountLogin;
