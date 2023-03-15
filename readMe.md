@@ -69,14 +69,14 @@ Start the server
 
 ### Endpoint Account Login
 
-| method   | url                                     | Description                                          |
-| :------- | :-------------------------------------- | :--------------------------------------------------- |
-| `GET`    | `/api/v1/account`                       | get all accounts                                     |
-| `GET`    | `/api/v1/account/:last-login-date-time` | get account login info by lastLoginDateTime > 3 days |
-| `POST`   | `/api/v1/account/login`                 | login account                                        |
-| `GET`    | `/api/v1/account/:id`                   | get account login by id                              |
-| `PUT`    | `/api/v1/account/:id`                   | edit data account                                    |
-| `DELETE` | `/api/v1/account/:id`                   | delete data account                                  |
+| method   | url                                    | Description                                          |
+| :------- | :------------------------------------- | :--------------------------------------------------- |
+| `GET`    | `/api/v1/account`                      | get all accounts                                     |
+| `GET`    | `/api/v1/account/last-login` | get account login info by lastLoginDateTime > 3 days |
+| `POST`   | `/api/v1/account/login`                | login account                                        |
+| `GET`    | `/api/v1/account/:id`                  | get account login by id                              |
+| `PUT`    | `/api/v1/account/:id`                  | edit data account                                    |
+| `DELETE` | `/api/v1/account/:id`                  | delete data account                                  |
 
 ##### example body param for method `POST /api/v1/account/login`
 
