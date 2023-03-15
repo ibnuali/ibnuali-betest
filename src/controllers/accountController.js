@@ -44,6 +44,7 @@ exports.loginAccount = catchAsync(async (req, res, next) => {
     res.status(200).json({
       status: "success",
       token: token,
+      userId: accountData.userId,
     });
   } else {
     res.status(400).json({ message: "Username or password is incorrect" });
