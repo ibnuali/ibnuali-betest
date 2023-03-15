@@ -21,7 +21,7 @@ router
 router
   .route("/:id")
   .get(auth, cache, userController.getUser)
-  .patch(auth, userController.updateUser)
-  .delete(auth, userController.deleteUser);
+  .patch(auth, cache, userController.updateUser)
+  .delete(auth, cache, userController.deleteUser);
 
 module.exports = router;

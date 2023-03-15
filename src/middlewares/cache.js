@@ -11,12 +11,14 @@ if (process.env.MODE === 'production') {
 
 const getAsync = client.get.bind(client);
 const setAsync = client.set.bind(client);
+const delAsync = client.del.bind(client);
 
 function cache(req, res, next) {
   req.redis = {
     client,
     get: getAsync,
     set: setAsync,
+    del: delAsync,
   };
 
    next();

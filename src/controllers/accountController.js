@@ -1,6 +1,6 @@
 const Account = require("../models/Account");
 const User = require("../models/User");
-const factory = require("./handlerFactory");
+const factory = require("./baseController");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const catchAsync = require("../middlewares/catchAsync");
