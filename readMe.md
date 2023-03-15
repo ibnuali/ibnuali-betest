@@ -44,26 +44,26 @@ Start the server
 
 ### Endpoint User
 
-| method   | url                                | Description                         |
-| :------- | :--------------------------------- | :---------------------------------- |
-| `GET`    | `/api/v1/user`                     | get all users                       |
-| `GET`    | `/api/v1/user/:accountNumber`      | get user info by accountNumber      |
-| `GET`    | `/api/v1/user/:registrationNumber` | get user info by registrationNumber |
-| `GET`    | `/api/v1/user/:id`                 | get user info by id                 |
-| `POST`   | `/api/v1/user`                     | create data user                    |
-| `PUT`    | `/api/v1/user/:id`                 | edit data user                      |
-| `DELETE` | `/api/v1/user/:id`                 | delete data user                    |
+| method   | url                                                    | Description                         |
+| :------- | :----------------------------------------------------- | :---------------------------------- |
+| `GET`    | `/api/v1/user`                                         | get all users                       |
+| `GET`    | `/api/v1/user/account-number/:accountNumber`           | get user info by accountNumber      |
+| `GET`    | `/api/v1/user/registration-number/:registrationNumber` | get user info by registrationNumber |
+| `GET`    | `/api/v1/user/:id`                                     | get user info by id                 |
+| `POST`   | `/api/v1/user`                                         | create data user                    |
+| `PUT`    | `/api/v1/user/:id`                                     | edit data user                      |
+| `DELETE` | `/api/v1/user/:id`                                     | delete data user                    |
 
 ##### example body param for method `POST /api/v1/user`
 
 ```json
 {
-  "fullName": "string",
-  "accountNumber": "string",
-  "email": "example@example.com",
-  "registrationNumber": "string",
-  "userName": "string",
-  "password": "string"
+    "fullName": "string",
+    "accountNumber": "string",
+    "email": "example@example.com",
+    "registrationNumber": "string",
+    "userName": "string",
+    "password": "string"
 }
 ```
 
@@ -82,7 +82,7 @@ Start the server
 
 ```json
 {
-  "username": "string",
-  "password": "string"
+    "username": "string",
+    "password": "string"
 }
 ```
